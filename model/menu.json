@@ -1,8 +1,8 @@
 {
     "Menu": [{
-        "title": "Coffee Menu",
+        "title": "Personal repos",
         "icon": "sap-icon://list",
-        "targetPage": "CoffeeList",
+        "targetPage": "Repos",
         "description": "Coffee Menu"
     }, {
         "title": "New Features v1.22",

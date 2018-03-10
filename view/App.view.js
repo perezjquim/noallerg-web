@@ -1,5 +1,17 @@
 jQuery.sap.require("ui5bp.app.config");
 
+const tabs = 
+[
+	{
+		"title": "Repos",
+		"view": "ui5bp.view.Repos"
+	},
+	{
+		"title": "Externallinks",
+		"view": "ui5bp.view.NewFeatures-v122"	
+	}
+];
+
 sap.ui.jsview("ui5bp.view.App", {
 
     getControllerName: function() {
@@ -61,9 +73,15 @@ sap.ui.jsview("ui5bp.view.App", {
         if(ui5bp.app.config.LaunchpadMode){
             this.app.addDetailPage(sap.ui.jsview("Launchpad", "ui5bp.view.Launchpad"));
         }
-        this.app.addDetailPage(sap.ui.xmlview("Info", "ui5bp.view.Info"));
-        this.app.addDetailPage(sap.ui.jsview("CoffeeList", "ui5bp.view.CoffeeList"));
-        this.app.addDetailPage(sap.ui.jsview("NewFeatures-v122", "ui5bp.view.NewFeatures-v122"));
+        
+        for(var i = 0; i < tabs.length; i++)
+        {
+        		this.app.addDetailPage(sap.ui.jsview(tabs[i].title,tabs[i].view));
+        }
+        
+       // this.app.addDetailPage(sap.ui.xmlview("Info", "ui5bp.view.Info"));
+       // this.app.addDetailPage(sap.ui.jsview("CoffeeList", "ui5bp.view.CoffeeList"));
+       // this.app.addDetailPage(sap.ui.jsview("NewFeatures-v122", "ui5bp.view.NewFeatures-v122"));
         
         // navigate to the first page in both master and detail areas.
         // the toMaster must be called after calling the toDetail, because both of them point to the same reference in phone and 
@@ -71,7 +89,7 @@ sap.ui.jsview("ui5bp.view.App", {
         if(ui5bp.app.config.LaunchpadMode){
             this.app.toDetail("Launchpad");
         } else {
-            this.app.toDetail("CoffeeList");
+            this.app.toDetail(tabs[0].title);
             this.app.toMaster("Menu");            
         }
         return this.app;

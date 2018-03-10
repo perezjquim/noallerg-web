@@ -1,13 +1,12 @@
 jQuery.sap.require("ui5bp.app.config");
 
-sap.ui.jsview("ui5bp.view.CoffeeList", {
+sap.ui.jsview("ui5bp.view.Repos", {
 
-    getControllerName: function() {
-        return "ui5bp.view.CoffeeList";
-    },
+	getControllerName : function() {
+		return "ui5bp.view.Repos";
+	},
 
-    createContent: function(oController) {
-
+	createContent : function(oController) {
         var oListTemplate = new sap.m.ObjectListItem({
             title: "{name}",
             icon: "sap-icon://goal",
@@ -36,6 +35,6 @@ sap.ui.jsview("ui5bp.view.CoffeeList", {
             headerContent: [oBtnLaunchpad],
             footer: new sap.m.Bar({})
         });
-    }
+	}
 
 });
