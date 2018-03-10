@@ -8,15 +8,13 @@ sap.ui.jsview("ui5bp.view.Repos", {
 
 	createContent : function(oController) {
         var oListTemplate = new sap.m.ObjectListItem({
-            title: "{name}",
+            title: "{name}"+" - "+"http://{link}/",
             icon: "sap-icon://goal",
-            intro: "{description}",
-            number: "{calories}",
-            numberUnit: "Calories"
+            intro: "{description}"
         });
 
         var oList = new sap.m.List({});
-        oList.bindAggregation("items", "/Coffee", oListTemplate);
+        oList.bindAggregation("items", "/Repos", oListTemplate);
 
         var oBtnLaunchpad = new sap.m.Button({
             icon : "sap-icon://home",
@@ -28,7 +26,7 @@ sap.ui.jsview("ui5bp.view.Repos", {
         });
 
         return new sap.m.Page({
-            title: "Coffee Menu",
+            title: "Personal repositories",
             showNavButton: "{device>/isPhone}",
             navButtonPress: [oController.doNavBack, oController],
             content: [oList],
