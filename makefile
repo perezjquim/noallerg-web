@@ -1,0 +1,4 @@
+main: exec
+	
+exec:
+	@grunt
