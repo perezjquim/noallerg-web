@@ -1,0 +1,37 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+	xmlns:t="sap.ui.table"
+	controllerName="sapex.menu"> 
+	<VBox
+		class="sapUiContentPadding"
+		width="100%"
+		alignItems="Center">
+		<items>
+			<Table
+				id="table"
+				items="{/}"
+				title="Markers">
+				
+		        <columns>
+		          <Column><Text text="Title" /></Column>
+		          <Column><Text text="Subtitle" /></Column>
+		          <Column><Text text="Latitude" /></Column>
+		          <Column><Text text="Longitude" /></Column>
+		        </columns>
+		        
+		        <items>
+		          <ColumnListItem>
+		            <cells>
+		              <Text text="{title}" />
+		              <Text text="{subtitle}" />
+		              <Text text="{latitude}" />
+		              <Text text="{longitude}" />         
+		            </cells>
+		          </ColumnListItem>
+		        </items>							
+				
+			</Table>
+		</items>
+	</VBox>
+</mvc:View>
