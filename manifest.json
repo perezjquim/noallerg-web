@@ -1,0 +1,127 @@
+{
+	"_version": "1.0.0",
+	"sap.app": 
+	{
+		"id": "noallerg",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": 
+		{
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": 
+	{
+		"technology": "UI5",
+		"icons": 
+		{
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": 
+		{
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": 
+	{
+		"rootView":
+		{
+			"viewName": "noallerg.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": 
+		{
+			"minUI5Version": "1.36.0",
+			"libs": 
+			{
+				"sap.ui.core": 
+				{
+
+				},
+				"sap.m": 
+				{
+				
+				},
+				"sap.ui.layout": 
+				{
+
+				}
+			}
+		},
+		"contentDensities": 
+		{
+			"compact": true,
+			"cozy": true
+		},
+		"models": 
+		{
+			"i18n": 
+			{
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": 
+				{
+					"bundleName": "noallerg.i18n.i18n"
+				}
+			}
+		},
+		"handleValidation": true,
+		"resources": 
+		{
+			"css": 
+			[
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": 
+		{
+			"config": 
+			{
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "noallerg.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide"	,
+				"clearTarget": true,
+				"async": true
+			},
+			"routes": 
+			[
+				{
+					"pattern": "",
+					"name": "loginscreen",
+					"target": "loginscreen"
+				},
+				{
+					"pattern": "list",
+					"name": "list",
+					"target": "list"
+				}
+			],
+			"targets": 
+			{
+				"loginscreen":
+				{
+					"viewName": "loginscreen"
+				},				
+				"list": 
+				{
+					"viewName": "list"
+				}
+			}
+		}
+	}
+}

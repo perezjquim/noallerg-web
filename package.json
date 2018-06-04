@@ -1,0 +1,11 @@
+{
+	"name": "NoAllerg",
+	"description": "blablabla",
+	"version": "1.0.0",
+	"private": true,
+	"dependencies": {
+		"express": "3.x",
+		"node-inspector": "0.7.x",
+		"open": "~0.0.4"
+	}
+}

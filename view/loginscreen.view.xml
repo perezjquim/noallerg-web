@@ -1,0 +1,31 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+	controllerName="noallerg.controller.loginscreen"> 
+	<VBox
+		class="sapUiContentPadding"
+		width="100%"
+		height="100%"
+		alignItems="Center"
+		justifyContent="Center">
+		<items>
+			<Label
+				text="{i18n>lblUser}" 
+				labelFor="fldUser"/>
+			<Input
+				id="fldUser" 
+				required="true"/>
+			<Label
+				text="{i18n>lblPass}" 
+				labelFor="fldPass"/>
+			<Input
+				id="fldPass" 
+				required="true" 
+				type="Password"/>
+			<Button
+				text="{i18n>lblLogin}"
+				press="onPress">
+			</Button>
+		</items>
+	</VBox>
+</mvc:View>

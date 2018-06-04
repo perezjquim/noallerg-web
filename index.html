@@ -1,34 +1,33 @@
 <!DOCTYPE HTML>
 <html>
+
 	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
-		
-		<title>SAPEX</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
 
-<script id="sap-ui-bootstrap" type="text/javascript" 
-       src="https://openui5.netweaver.ondemand.com/1.28.15/resources/sap-ui-core.js" 
-       data-sap-ui-theme="sap_bluecrystal" 
-       data-sap-ui-xx-bindingSyntax="complex" 
-       data-sap-ui-libs="sap.m"
-        data-sap-ui-resourceroots='{
-            "ui5bp": "./"
-        }'>
-    </script>
+		<title>NoAllerg</title>
 
-		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
-
-		<script>
-		sap.ui.localResources("sapex");
-		var app = new sap.m.App("app");
-		
-		var pgLogin = sap.ui.view({id:"login", viewName:"sapex.loginscreen", type:sap.ui.core.mvc.ViewType.XML});
-		app.addPage(pgLogin);
-		app.placeAt("content");
+		<script 
+			id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/1.42.6/resources/sap-ui-core.js" 
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-preload="async"			
+			data-sap-ui-resourceroots='{"noallerg": "./"}'>
 		</script>
 
+		<script>
+			sap.ui.getCore().attachInit(function () {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						name: "noallerg"
+					})
+				}).placeAt("content");
+			});
+		</script>
 	</head>
-	<body class="sapUiBody" role="application">
-		<div id="content"></div>
+
+	<body class="sapUiBody" id="content">
 	</body>
+
 </html>
