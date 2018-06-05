@@ -6,18 +6,18 @@
 	<VBox
 		class="sapUiContentPadding"
 		width="100%"
-		alignItems="Center">
+		height="100%">
 		<items>
 			<Table
 				id="table"
 				items="{/}"
-				title="Markers">
+				title="{i18n>TITLE_MARKERS}">
 				
 		        <columns>
-		          <Column><Text text="Title" /></Column>
-		          <Column><Text text="Subtitle" /></Column>
-		          <Column><Text text="Latitude" /></Column>
-		          <Column><Text text="Longitude" /></Column>
+		          <Column><Text text="{i18n>LBL_TITLE}" /></Column>
+		          <Column><Text text="{i18n>LBL_SUBTITLE}" /></Column>
+		          <Column><Text text="{i18n>LBL_LATITUDE}" /></Column>
+		          <Column><Text text="{i18n>LBL_LONGITUDE}" /></Column>
 		        </columns>
 		        
 		        <items>

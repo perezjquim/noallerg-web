@@ -1,31 +1,31 @@
 <mvc:View
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns="sap.m"
-	controllerName="noallerg.controller.loginscreen"> 
-	<VBox
-		class="sapUiContentPadding"
-		width="100%"
-		height="100%"
-		alignItems="Center"
-		justifyContent="Center">
-		<items>
-			<Label
-				text="{i18n>lblUser}" 
-				labelFor="fldUser"/>
+	controllerName="noallerg.controller.loginscreen"
+	xmlns:form="sap.ui.commons.form"
+	displayBlock="false">
+	<Bar>
+		<contentMiddle>
+			<Label text="{i18n>MAIN_TITLE}"/>
+		</contentMiddle>
+	</Bar>
+	<form:SimpleForm
+		layout="ResponsiveGridLayout"
+		title="{i18n>TITLE_LOGIN}">
 			<Input
 				id="fldUser" 
-				required="true"/>
-			<Label
-				text="{i18n>lblPass}" 
-				labelFor="fldPass"/>
+				required="true"
+				placeholder="{i18n>LBL_USER}"/>
+		
 			<Input
 				id="fldPass" 
-				required="true" 
-				type="Password"/>
+				required="true" 		
+				type="Password"
+				placeholder="{i18n>LBL_PASS}"/>
+
 			<Button
-				text="{i18n>lblLogin}"
-				press="onPress">
-			</Button>
-		</items>
-	</VBox>
+				text="{i18n>LBL_LOGIN}"
+				type="Accept"
+				press="onPress"/>
+		</form:SimpleForm>
 </mvc:View>
