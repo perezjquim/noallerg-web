@@ -25,7 +25,7 @@ sap.ui.define([
 				var pass = this.byId("fldPass")
 					.getValue();
 
-				const URL = "http://noallerg.openode.io/markers";
+				const URL = "//noallerg.openode.io/markers";
 				const HEADERS =
         {
            "Authorization" : "Basic " + btoa(user + ":" + pass),
