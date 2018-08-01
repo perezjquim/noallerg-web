@@ -1,40 +1,57 @@
 sap.ui.define([
 	'sap/ui/core/mvc/Controller',
 	'sap/m/MessageToast',
-	"sap/ui/core/UIComponent"
-], function (Controller, MessageToast, UIComponent) {
+	"sap/ui/core/UIComponent",
+	"sap/ui/core/BusyIndicator"	
+], function (Controller, MessageToast, UIComponent, BusyIndicator) {
 	"use strict";
 
-	return Controller.extend("noallerg.controller.BaseController", {
-
-		/**
-		 * Convenience method for accessing the router.
-		 * @public
-		 * @returns {sap.ui.core.routing.Router} the router for this component
-		 */
-		getRouter: function () {
+	return Controller.extend("noallerg.controller.BaseController", 
+	{
+		/* ROUTING-RELATED STUFF */
+		getRouter: function ()
+		{
 			return UIComponent.getRouterFor(this);
 		},
-
-		/**
-		 * Convenience method for getting the view model by name.
-		 * @public
-		 * @param {string} [sName] the model name
-		 * @returns {sap.ui.model.Model} the model instance
-		 */
-		getModel: function (sName) {
-			return this.getView().getModel(sName);
+		navTo : function (destination,args,noHistory)
+		{
+			this.showBusyIndicator();
+			this.getRouter().navTo(destination,args,noHistory);
+			this.hideBusyIndicator();
 		},
 
-		/**
-		 * Convenience method for setting the view model.
-		 * @public
-		 * @param {sap.ui.model.Model} oModel the model instance
-		 * @param {string} sName the model name
-		 * @returns {sap.ui.mvc.View} the view instance
-		 */
-		setModel: function (oModel, sName) {
+		/* MODEL-RELATED STUFF */
+		getModel: function (sName)
+		{
+			return this.getView().getModel(sName);
+		},
+		setModel: function (oModel, sName)
+		{
 			return this.getView().setModel(oModel, sName);
+		},
+		getGlobalModel: function (sName)
+		{
+			return this.getOwnerComponent().getModel(sName);
+		},
+		setGlobalModel: function (oModel,sName)
+		{
+			return this.getOwnerComponent().setModel(oModel, sName);
+		},
+
+		/* BUSY INDICATOR-RELATED STUFF */
+		showBusyIndicator: function()
+		{
+			BusyIndicator.show();
+		},
+		hideBusyIndicator: function()
+		{
+			BusyIndicator.hide();
+		},
+
+		/* TOAST MESSAGES */
+		toast: function(msg)
+		{
+			MessageToast.show(msg);
 		}
 	});
 });

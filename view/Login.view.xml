@@ -1,7 +1,7 @@
 <mvc:View
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	controllerName="noallerg.controller.loginscreen"
+	controllerName="noallerg.controller.Login"
 	xmlns:form="sap.ui.layout.form"
 	displayBlock="false">
 	<Page title="{i18n>MAIN_TITLE}">

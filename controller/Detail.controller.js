@@ -4,15 +4,16 @@ sap.ui.define([
 	'sap/m/MessageToast',
 	'sap/ui/model/json/JSONModel'
 ],
-	function($, BaseController, MessageToast, JSONModel, index) {
+	function($, BaseController, MessageToast, JSONModel) {
 	"use strict";
 
-	return BaseController.extend("noallerg.controller.list-detail",
+	return BaseController.extend("noallerg.controller.Detail",
 	{
 		onInit: function ()
 		{
 			this.getRouter()
-				.attachRouteMatched(function(oEvent)
+				.getRoute("Detail")
+				.attachMatched(function(oEvent)
 				{
 					try
 					{

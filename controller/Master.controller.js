@@ -7,7 +7,7 @@ sap.ui.define([
 	function($, BaseController, MessageToast, JSONModel) {
 	"use strict";
 
-	return BaseController.extend("noallerg.controller.list",
+	return BaseController.extend("noallerg.controller.Master",
 	{
 		onInit: function ()
 		{

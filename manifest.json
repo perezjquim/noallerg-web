@@ -10,18 +10,6 @@
 		"applicationVersion":
 		{
 			"version": "1.0.0"
-		},
-		"dataSources":
-		{
-			"meta":
-			{
-				"uri":"model/meta.xml",
-             "type": "OData" , 
-             "settings": 
-             { 
-                 "odataVersion": "2.0"
-             }
-			}
 		}
 	},
 	"sap.ui":
@@ -86,10 +74,9 @@
 					"bundleName": "noallerg.i18n.i18n"
 				}
 			},
-			"meta":
+			"markers":
 			{
-				"dataSource":"meta",
-				"preload":true
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"handleValidation": true,
@@ -118,35 +105,35 @@
 			[
 				{
 					"pattern": "",
-					"name": "loginscreen",
-					"target": "loginscreen"
+					"name": "login",
+					"target": "login"
 				},
 				{
-					"pattern": "/list",
-					"name": "list",
-					"target": "list"
+					"pattern": "/markers",
+					"name": "master",
+					"target": "master"
 				},
 				{
-					"pattern": "list/{index}",
-					"name": "list-detail",
-					"target": "list-detail"
+					"pattern": "/markers/{index}",
+					"name": "detail",
+					"target": "detail"
 				}
 			],
 			"targets":
 			{
-				"loginscreen":
+				"login":
 				{
-					"viewName": "loginscreen",
+					"viewName": "Login",
 					"controlAggregation": "masterPages"
 				},
-				"list":
+				"master":
 				{
-					"viewName": "list",
+					"viewName": "Master",
 					"controlAggregation": "masterPages"
 				},
-				"list-detail":
+				"detail":
 				{
-					"viewName": "list-detail",
+					"viewName": "Detail",
 					"controlAggregation": "detailPages"
 				}
 			}
