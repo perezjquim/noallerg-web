@@ -7,23 +7,28 @@ sap.ui.define([
 ], function(UIComponent, JSONModel, Device, $, models) {
 	"use strict";
 
+	function httpGet(theUrl)
+	{
+	    var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+	    xmlHttp.send( null );
+	    return xmlHttp.responseText;
+	}			
+
 	return UIComponent.extend("noallerg.Component", {
 
 		metadata: {
 			manifest: "json"
 		},
 
-		/**
-		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
-		 * @public
-		 * @override
-		 */
-		init: function() {
-			// call the base component's init function
+		init: function() 
+		{
 			UIComponent.prototype.init.apply(this, arguments);
 
-			// set the device model
-			//this.setModel(models.createDeviceModel(), "device");
+			var response = httpGet("http://noallerg.x10host.com/markers.php");
+			var json = JSON.parse(response);
+			var model = new JSONModel(json);
+			this.setModel(model);
 
 			this.getRouter().initialize();
 		}

@@ -1,21 +1,33 @@
 {
 	"_version": "1.0.0",
-	"sap.app": 
+	"sap.app":
 	{
 		"id": "noallerg",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
-		"applicationVersion": 
+		"applicationVersion":
 		{
 			"version": "1.0.0"
+		},
+		"dataSources":
+		{
+			"meta":
+			{
+				"uri":"model/meta.xml",
+             "type": "OData" , 
+             "settings": 
+             { 
+                 "odataVersion": "2.0"
+             }
+			}
 		}
 	},
-	"sap.ui": 
+	"sap.ui":
 	{
 		"technology": "UI5",
-		"icons": 
+		"icons":
 		{
 			"icon": "",
 			"favIcon": "",
@@ -24,14 +36,14 @@
 			"tablet": "",
 			"tablet@2": ""
 		},
-		"deviceTypes": 
+		"deviceTypes":
 		{
 			"desktop": true,
 			"tablet": true,
 			"phone": true
 		}
 	},
-	"sap.ui5": 
+	"sap.ui5":
 	{
 		"rootView":
 		{
@@ -40,65 +52,69 @@
 			"async": true,
 			"id": "app"
 		},
-		"dependencies": 
+		"dependencies":
 		{
 			"minUI5Version": "1.36.0",
-			"libs": 
+			"libs":
 			{
-				"sap.ui.core": 
+				"sap.ui.core":
 				{
 
 				},
-				"sap.m": 
+				"sap.m":
 				{
-				
+
 				},
-				"sap.ui.layout": 
+				"sap.ui.layout":
 				{
 
 				}
 			}
 		},
-		"contentDensities": 
+		"contentDensities":
 		{
 			"compact": true,
 			"cozy": true
 		},
-		"models": 
+		"models":
 		{
-			"i18n": 
+			"i18n":
 			{
 				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": 
+				"settings":
 				{
 					"bundleName": "noallerg.i18n.i18n"
 				}
+			},
+			"meta":
+			{
+				"dataSource":"meta",
+				"preload":true
 			}
 		},
 		"handleValidation": true,
-		"resources": 
+		"resources":
 		{
-			"css": 
+			"css":
 			[
 				{
 					"uri": "css/style.css"
 				}
 			]
 		},
-		"routing": 
+		"routing":
 		{
-			"config": 
+			"config":
 			{
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"viewPath": "noallerg.view",
 				"controlId": "app",
-				"controlAggregation": "pages",
 				"transition": "slide"	,
 				"clearTarget": true,
 				"async": true
 			},
-			"routes": 
+			"routes":
 			[
 				{
 					"pattern": "",
@@ -106,20 +122,32 @@
 					"target": "loginscreen"
 				},
 				{
-					"pattern": "list",
+					"pattern": "/list",
 					"name": "list",
 					"target": "list"
+				},
+				{
+					"pattern": "list/{index}",
+					"name": "list-detail",
+					"target": "list-detail"
 				}
 			],
-			"targets": 
+			"targets":
 			{
 				"loginscreen":
 				{
-					"viewName": "loginscreen"
-				},				
-				"list": 
+					"viewName": "loginscreen",
+					"controlAggregation": "masterPages"
+				},
+				"list":
 				{
-					"viewName": "list"
+					"viewName": "list",
+					"controlAggregation": "masterPages"
+				},
+				"list-detail":
+				{
+					"viewName": "list-detail",
+					"controlAggregation": "detailPages"
 				}
 			}
 		}

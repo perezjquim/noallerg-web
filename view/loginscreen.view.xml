@@ -1,31 +1,31 @@
 <mvc:View
-	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	controllerName="noallerg.controller.loginscreen"
-	xmlns:form="sap.ui.commons.form"
+	xmlns:form="sap.ui.layout.form"
 	displayBlock="false">
-	<Bar>
-		<contentMiddle>
-			<Label text="{i18n>MAIN_TITLE}"/>
-		</contentMiddle>
-	</Bar>
-	<form:SimpleForm
-		layout="ResponsiveGridLayout"
-		title="{i18n>TITLE_LOGIN}">
-			<Input
-				id="fldUser" 
-				required="true"
-				placeholder="{i18n>LBL_USER}"/>
-		
-			<Input
-				id="fldPass" 
-				required="true" 		
-				type="Password"
-				placeholder="{i18n>LBL_PASS}"/>
+	<Page title="{i18n>MAIN_TITLE}">
+		<content>
+		<form:SimpleForm
+				layout="ResponsiveGridLayout"
+				title="{i18n>TITLE_LOGIN}">
+					<Input
+						id="fldUser"
+						required="true"
+						placeholder="{i18n>LBL_USER}"/>
 
-			<Button
-				text="{i18n>LBL_LOGIN}"
-				type="Accept"
-				press="onPress"/>
-		</form:SimpleForm>
+					<Input
+						id="fldPass"
+						required="true"
+						type="Password"
+						placeholder="{i18n>LBL_PASS}"/>
+
+					<Button
+						text="{i18n>LBL_LOGIN}"
+						type="Accept"
+						press="onPress"/>
+			</form:SimpleForm>
+		</content>
+	</Page>
+
 </mvc:View>

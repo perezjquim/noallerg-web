@@ -1,0 +1,59 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	controllerName="noallerg.controller.list-detail"
+	xmlns:semantic="sap.m.semantic">
+	<semantic:DetailPage
+		id="page"
+		title="{i18n>TITLE_INFO}"
+		navButtonPress="onNavBack"
+		showNavButton="false">
+
+		<semantic:content>
+
+		<Table
+			id="lineItemsList"
+			width="auto"
+			items="{/}"
+			updateFinished="onListUpdateFinished"
+			noDataText="{i18n>detailLineItemTableNoDataText}"
+			busyIndicatorDelay="{detailView>/lineItemTableDelay}"
+			class="sapUiResponsiveMargin">
+			<headerToolbar>
+				<Toolbar id="lineItemsToolbar">
+					<Title
+						id="lineItemsHeader"
+						text="{detailView>/lineItemListTitle}"/>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Text text="{i18n>LBL_TITLE}"/>
+				</Column>
+				<Column>
+					<Text text="{i18n>LBL_SUBTITLE}"/>
+				</Column>
+				<Column>
+					<Text text="{i18n>LBL_LATITUDE}"/>
+				</Column>
+				<Column>
+					<Text text="{i18n>LBL_LONGITUDE}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{title}" />
+						<Text text="{subtitle}" />
+						<Text text="{latitude}" />
+						<Text text="{longitude}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</semantic:content>
+
+
+	</semantic:DetailPage>
+</mvc:View>

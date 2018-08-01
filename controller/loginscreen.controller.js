@@ -14,26 +14,38 @@ sap.ui.define([
 	Text) {
 	"use strict";
 
-	var router;
-
 	return BaseController.extend("noallerg.controller.loginscreen", 
 	{
 			onInit: function(evt)
 			{
-				router = this.getRouter();
+				this.setupEnterListener();
+				var oModel = this.getOwnerComponent().getModel("meta");
+				oModel.read("/Customers('ALFKI')",null,null,true,
+						function(data) 
+						{
+								alert();
+								var oModelCheckpoint = new sap.ui.model.json.JSONModel();
+                oModelCheckpoint.setData(data);
+				    },
+				    function(err) 
+				    {
+				    		alert(err);
+				    });				
+							
 			},
 
 			onPress: function (evt) 
 			{
+				const controller = this;
+
 				var user = this.byId("fldUser")
 					.getValue();
 				
 				var pass = this.byId("fldPass")
 					.getValue();
-				
-				httpGetAsync("http://noallerg.x10host.com/check_cred.php?user="+user+"&pass="+pass,function(response)
+
+				this.httpGetAsync("http://noallerg.x10host.com/check_cred.php?user="+user+"&pass="+pass,function(response)
 				{
-					console.log("response: \""+response+"\"");
 					var message = "";
 					switch(response)
 					{
@@ -63,35 +75,51 @@ sap.ui.define([
 							press: function () 
 							{
 								dialog.close();
-								if(message == "Sucesso")
-								{
-									router.navTo("list");
-								}
 							}
 						}),
 
-						stretchOnPhone : true, // boolean, since 1.11.2
+						stretchOnPhone : false, // boolean, since 1.11.2
 						afterClose: function() 
 						{
-							dialog.destroy();
+							dialog.destroy();		
+							if(message == "Sucesso")
+							{
+								controller.getRouter().navTo("list",{index:0});
+							}
+							else
+							{
+								controller.setupEnterListener();
+							}							
 						}
 					});
 
 					dialog.open();
 				});
-			}
+			},
+
+			setupEnterListener : function()
+			{
+				const ENTER_KEY = 13;
+				const controller = this;
+				$(document).on('keydown',function(e)
+				{
+			    if(e.keyCode == ENTER_KEY)
+			    {
+			    	controller.onPress();
+			    	$(document).off('keydown');
+			    }
+				});
+			},
+
+	 		httpGetAsync : function (theUrl, callback)
+			{
+			    var xmlHttp = new XMLHttpRequest();
+			    xmlHttp.onreadystatechange = function() { 
+			        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+			            callback(xmlHttp.responseText);
+			    }
+			    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+			    xmlHttp.send(null);
+			}						
 	});
-
-	
-	function httpGetAsync(theUrl, callback)
-	{
-	    var xmlHttp = new XMLHttpRequest();
-	    xmlHttp.onreadystatechange = function() { 
-	        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-	            callback(xmlHttp.responseText);
-	    }
-	    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-	    xmlHttp.send(null);
-	}
-
 });
