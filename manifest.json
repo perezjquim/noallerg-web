@@ -109,12 +109,12 @@
 					"target": "login"
 				},
 				{
-					"pattern": "/markers",
+					"pattern": "markers",
 					"name": "master",
 					"target": "master"
 				},
 				{
-					"pattern": "/markers/{index}",
+					"pattern": "markers/{path}",
 					"name": "detail",
 					"target": "detail"
 				}

@@ -11,24 +11,16 @@ sap.ui.define([
 	{
 		onInit: function ()
 		{
-			this.getView().setModel(this.getOwnerComponent().getModel());
+			//
 		},
 
 		onSelectionChange: function(oEvent)
 		{
-			try
-			{
-				var index = oEvent
-									.getSource()
-									._aSelectedPaths[0]
-									.replace("/","");
+			this.showBusyIndicator();
 
-				this.getRouter().navTo("list-detail",
-				{
-					index: index
-				});
-			}
-			catch(ex) { alert(ex); }
+			var item = oEvent.getSource();
+			var path = item.getBindingContext("markers").getPath().substr(1);
+			this.getRouter().navTo("detail",{ path: path });
 		}
 	});
 });

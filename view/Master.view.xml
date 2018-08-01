@@ -4,96 +4,20 @@
 	xmlns:core="sap.ui.core"
 	controllerName="noallerg.controller.Master"
 	xmlns:semantic="sap.m.semantic">
-	<semantic:MasterPage
-		id="page"
-		title="{i18n>TITLE_MARKERS}"
-		navButtonPress="onNavBack"
-		showNavButton="false">
-
-		<semantic:subHeader>
-			<Bar id="headerBar">
-				<contentMiddle>
-					<SearchField
-						id="searchField"
-						showRefreshButton="{= !${device>/support/touch} }"
-						width="100%"
-						search="onSearch">
-					</SearchField>
-				</contentMiddle>
-			</Bar>
-		</semantic:subHeader>
-
+	<semantic:MasterPage title="{i18n>TITLE_MARKERS}">
 		<semantic:content>
-					<List
-						id="list"
-						items="{/}"
-						busyIndicatorDelay="{masterView>/delay}"
-						noDataText="{masterView>/noDataText}"
-						mode="SingleSelectMaster"
-						growing="true"
-						growingScrollToLoad="true"
-						updateFinished="onUpdateFinished"
-						selectionChange="onSelectionChange">
-						<items>
-							<ObjectListItem
-								type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
-								title="{title}"
-								press="onSelectionChange">
-							</ObjectListItem>
-						</items>
-					</List>
-				</semantic:content>
-
-
-
-<!--
-				<m:List mode="SingleSelectMaster" id="canteenList" headerText="{i18n>canteen}"
-					items="{path : '/RefeitoriosPorOperadorSet' , parameters:{expand : 'RefeicaoEmCursoSet'} }"
-					itemPress="onPressList">
-                        <m:items>
-                                        <m:StandardListItem type="Active" title="{RefTxt}" iconDensityAware="false" iconInset="false" press="onListItemPress" icon="sap-icon://home"/>
-                        </m:items>
-        </m:List> -->
-
-
-		<semantic:sort>
-					<semantic:SortSelect
-						id="sort"
-						selectedKey="{masterView>/sortBy}"
-						change="onSort">
-						<core:Item
-							id="masterSort1"
-							key="Name"
-							text="{i18n>masterSort1}"/>
-						<core:Item
-							id="masterSort2"
-							key="UnitNumber"
-							text="{i18n>masterSort2}"/>
-					</semantic:SortSelect>
-				</semantic:sort>
-
-				<semantic:filter>
-					<semantic:FilterAction
-						id="filter"
-						press="onOpenViewSettings" />
-				</semantic:filter>
-
-				<semantic:group>
-					<semantic:GroupSelect
-						id="group"
-						selectedKey="{masterView>/groupBy}"
-						change="onGroup">
-						<core:Item
-							id="masterGroupNone"
-							key="None"
-							text="{i18n>masterGroupNone}"/>
-						<core:Item
-							id="masterGroup1"
-							key="UnitNumber"
-							text="{i18n>masterGroup1}"/>
-					</semantic:GroupSelect>
-				</semantic:group>
-
-
+			<List
+				items="{markers>/}"
+				growing="true"
+				growingScrollToLoad="true">
+				<items>
+					<ObjectListItem
+						type="Navigation"
+						title="{markers>title}"
+						press="onSelectionChange">
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
 	</semantic:MasterPage>
 </mvc:View>

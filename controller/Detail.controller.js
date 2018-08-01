@@ -12,26 +12,17 @@ sap.ui.define([
 		onInit: function ()
 		{
 			this.getRouter()
-				.getRoute("Detail")
+				.getRoute("detail")
 				.attachMatched(function(oEvent)
 				{
-					try
-					{
-						var index = oEvent
-												.getParameter("arguments")
-												.index;								
+					var path = "/" + oEvent.getParameter("arguments").path;									
+          this.getView().bindElement(
+          {
+                      path: path,
+                      model: "markers"
+          });
 
-						var data = this
-											.getOwnerComponent()
-											.getModel()
-											.getData()
-											[index];
-
-						var model = new JSONModel([data]);
-						this.getView().setModel(model);						
-					}
-					catch(ex) { alert(ex); }
-
+          this.hideBusyIndicator();
 			 	}, this);
 		}
 	});

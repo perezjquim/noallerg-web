@@ -39,7 +39,7 @@ sap.ui.define([
 					{
 			    	$(document).off('keydown');						
 						self.toast("Autenticado com sucesso!");
-						self.getGlobalModel(model,"markers");						
+						self.setGlobalModel(model,"markers");						
 						self.navTo("master");					
 					}
 					else
